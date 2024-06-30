@@ -214,7 +214,7 @@ if(sum(imagesUsed) == 0)
 elseif(sum(imagesUsed) < 10)
     warning(['only %i checkerboards found.\n',...
         '10 images is the minimum number of boards recommended for an accurate calibration (though more is better, orignal calibration used 50+)\n',...
-        'Check your images and keep in mind, lighting, occlusions and backgrounds with roughly checkered patterns'], tValid);
+        'Check your images and keep in mind, lighting, occlusions and backgrounds with roughly checkered patterns'], sum(imagesUsed));
 end
 
 %% Process arm poses
@@ -232,7 +232,10 @@ worldPoints = generateCheckerboardPoints(boardSize, 1);
 
 %estimate camera parameters
 if(isempty(cameraParams))
-    cameraParams = estimateCameraParameters(points,squareSize*worldPoints,'WorldUnits','m','NumRadialDistortionCoefficients',3,'EstimateTangentialDistortion',true);
+    camInt = [150.06462097, 0, 159.6432972; 0, 150.03486633, 121.28721237; 0, 0, 1];
+    disp("Using given camera intrinsics:")
+    disp(camInt)
+    cameraParams = estimateCameraParameters(points,squareSize*worldPoints,'WorldUnits','m','NumRadialDistortionCoefficients',3,'EstimateTangentialDistortion',true,'InitialK',camInt);
 end
     
 %% Optimize
