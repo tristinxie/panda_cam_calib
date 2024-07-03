@@ -1,4 +1,4 @@
-function [ TBase, TEnd, cameraParams, TBaseStd, TEndStd, pixelErr ] = CalCamArm( imageFolder, armMat, squareSize, varargin )
+function [ TBaseAA, TBase, TEnd, cameraParams, TBaseStd, TEndStd, pixelErr ] = CalCamArm( imageFolder, armMat, squareSize, varargin )
 %CALCAMARM Calibrates a camera to work with a robotic arm by finding the
 %camera intrinsics and the camera to arm base transformation matrix using a
 %series of arm poses and corresponding images of the arm holding a
@@ -331,7 +331,7 @@ if(saveImages)
            'Red is x, Green is y, Blue is z', 'FitBoxToText','on',...
            'BackgroundColor','white','Color','red')
        hold off
-       saveas(f, sprintf('%s/outputImage%i.png',savePath,i))
+       saveas(f, sprintf('%s/outputImage%i.png',savePath,i-1))
     end
     if(verbose)
         fprintf('Done saving images\n');
@@ -382,6 +382,12 @@ TEndStd = bootSol(:,7:12);
 
 %convert to matrix
 if(outputTmat)
+    disp('TBase before convert')
+    disp(TBase)
+    TBasePos = TBase(1:3);
+    TBaseRot = TBase(4:6);
+    OurTBase = [TBaseRot, TBasePos];
+    [ TBaseAA ] = OurTBase;
     [ TBase, TBaseStd ] = ConvertTformSystem(TBase, TBaseStd);
     [ TEnd, TEndStd ] = ConvertTformSystem(TEnd, TEndStd);
 end
