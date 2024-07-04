@@ -1,0 +1,88 @@
+Starting Arm Calibration
+Extracting Chessboards
+Finding Camera Parameters
+Using given camera intrinsics:
+  151.1343         0  160.0976
+         0  151.1347  120.6547
+         0         0    1.0000
+
+Running Optimization
+[Warning: Average projection error found to be 23.2 pixels.
+This large error is a strong indicator that something has gone wrong.
+Check that the input paramters are correct and sufficient checkerboard images were correctly processed.
+If the problem persists, try manually tuning the baseEst and gripEst parameters.
+If it still will not work, email me a z.taylor@acfr.usyd.edu.au
+] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('CalCamArm', '/home/arclab/Camera-to-Arm-Calibration/CalCamArm.m', 277)" style="font-weight:bold">CalCamArm</a> (<a href="matlab: opentoline('/home/arclab/Camera-to-Arm-Calibration/CalCamArm.m',277,0)">line 277</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Panda', '/home/arclab/Camera-to-Arm-Calibration/Panda.m', 14)" style="font-weight:bold">Panda</a> (<a href="matlab: opentoline('/home/arclab/Camera-to-Arm-Calibration/Panda.m',14,0)">line 14</a>)] 
+Saving images with initial guess and result
+Done saving images
+Running Bootstrap Optimization          1.0%   2.0%   3.0%   4.0%   5.0%   6.0%   7.0%   8.0%   9.0%  10.0%  11.0%  12.0%  13.0%  14.0%  15.0%  16.0%  17.0%  18.0%  19.0%  20.0%  21.0%  22.0%  23.0%  24.0%  25.0%  26.0%  27.0%  28.0%  29.0%  30.0%  31.0%  32.0%  33.0%  34.0%  35.0%  36.0%  37.0%  38.0%  39.0%  40.0%  41.0%  42.0%  43.0%  44.0%  45.0%  46.0%  47.0%  48.0%  49.0%  50.0%  51.0%  52.0%  53.0%  54.0%  55.0%  56.0%  57.0%  58.0%  59.0%  60.0%  61.0%  62.0%{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('ProjectError')" style="font-weight:bold">ProjectError</a>
+
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('CalCamArm>@(est)ProjectError(bootPoints,cameraParams,worldPoints,bootArmPose,inliers,est)', '/home/arclab/Camera-to-Arm-Calibration/CalCamArm.m', 355)" style="font-weight:bold">CalCamArm>@(est)ProjectError(bootPoints,cameraParams,worldPoints,bootArmPose,inliers,est)</a> (<a href="matlab: opentoline('/home/arclab/Camera-to-Arm-Calibration/CalCamArm.m',355,0)">line 355</a>)
+        optFunc = @(est) ProjectError(bootPoints, cameraParams, worldPoints, bootArmPose, inliers, est);
+
+In finDiffEvalAndChkErr
+
+In finitedifferences
+
+In computeFinDiffGradAndJac
+
+In barrier
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('fmincon', '/usr/local/MATLAB/R2022b/toolbox/shared/optimlib/fmincon.m', 886)" style="font-weight:bold">fmincon</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2022b/toolbox/shared/optimlib/fmincon.m',886,0)">line 886</a>)
+    [X,FVAL,EXITFLAG,OUTPUT,LAMBDA,GRAD,HESSIAN] = barrier(funfcn,X,A,B,Aeq,Beq,l,u,confcn,options.HessFcn, ...
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('CalCamArm', '/home/arclab/Camera-to-Arm-Calibration/CalCamArm.m', 358)" style="font-weight:bold">CalCamArm</a> (<a href="matlab: opentoline('/home/arclab/Camera-to-Arm-Calibration/CalCamArm.m',358,0)">line 358</a>)
+        bootSol(idx,:) = fmincon(optFunc,solution,[],[],[],[],lb,ub,[],options);
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Panda', '/home/arclab/Camera-to-Arm-Calibration/Panda.m', 14)" style="font-weight:bold">Panda</a> (<a href="matlab: opentoline('/home/arclab/Camera-to-Arm-Calibration/Panda.m',14,0)">line 14</a>)
+[TBaseAA, TBase, TEnd, cameraParams, TBaseStd, TEndStd, pixelErr] = CalCamArm(convertStringsToChars(imageFolder), armMat, squareSize,'maxBaseOffset',2,'savepath', convertStringsToChars(outPath));
+} 
+Panda
+Starting Arm Calibration
+Extracting Chessboards
+Finding Camera Parameters
+Using given camera intrinsics:
+  151.1343         0  160.0976
+         0  151.1347  120.6547
+         0         0    1.0000
+
+Running Optimization
+Saving images with initial guess and result
+Done saving images
+Running Bootstrap Optimization          1.0%   2.0%   3.0%   4.0%   5.0%   6.0%   7.0%   8.0%   9.0%  10.0%  11.0%  12.0%  13.0%  14.0%  15.0%  16.0%  17.0%  18.0%  19.0%  20.0%  21.0%  22.0%  23.0%  24.0%  25.0%  26.0%  27.0%  28.0%  29.0%  30.0%  31.0%  32.0%  33.0%  34.0%  35.0%  36.0%  37.0%  38.0%  39.0%  40.0%  41.0%  42.0%  43.0%  44.0%  45.0%  46.0%  47.0%  48.0%  49.0%  50.0%  51.0%  52.0%  53.0%  54.0%  55.0%  56.0%  57.0%  58.0%  59.0%  60.0%  61.0%  62.0%  63.0%  64.0%  65.0%  66.0%  67.0%  68.0%  69.0%  70.0%  71.0%  72.0%  73.0%  74.0%  75.0%  76.0%  77.0%  78.0%  79.0%  80.0%  81.0%  82.0%  83.0%  84.0%  85.0%  86.0%  87.0%  88.0%  89.0%  90.0%  91.0%  92.0%  93.0%  94.0%  95.0%  96.0%  97.0%  98.0%  99.0% 100.0% 
+Converting to Transformation matricies
+TBase before convert
+    0.1735    0.3705    0.9338    0.8068    2.0779   -1.5424
+
+Calibration completed in 303.2 seconds with a mean error of 0.386 pixels
+
+Our camera to base with swapped orientation and position angle axis is
+    0.8068    2.0779   -1.5424    0.1735    0.3705    0.9338
+
+
+Final camera to arm base transform is
+   -0.7395    0.6732   -0.0030    0.1735
+    0.1978    0.2129   -0.9568    0.3705
+   -0.6435   -0.7082   -0.2906    0.9338
+         0         0         0    1.0000
+
+Final end effector to checkerboard transform is
+    0.0073    0.0453    0.9989   -0.0261
+    0.9999    0.0144   -0.0079   -0.0433
+   -0.0148    0.9989   -0.0451    0.0322
+         0         0         0    1.0000
+
+Final camera matrix is
+  151.1343         0  160.0976
+         0  151.1347  120.6547
+         0         0    1.0000
+
+Final camera radial distortion parameters are
+     0     0     0
+
+Final camera tangential distortion parameters are
+     0     0
+
